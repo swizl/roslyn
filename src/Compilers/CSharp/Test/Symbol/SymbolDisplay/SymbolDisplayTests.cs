@@ -6092,7 +6092,7 @@ class C
             Assert.Equal(RefKind.RefReadOnly, local.RefKind);
         }
 
-        [WorkItem(22507, "https://github.com/dotnet/roslyn/issues/22507")]
+        [Fact, WorkItem(22507, "https://github.com/dotnet/roslyn/issues/22507")]
         public void EdgeCasesForEnumFieldComparer()
         {
             // A bad comparer could cause sorting the enum fields
