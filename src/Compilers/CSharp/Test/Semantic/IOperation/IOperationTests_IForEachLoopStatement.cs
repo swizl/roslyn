@@ -601,7 +601,18 @@ IForEachLoopOperation (LoopKind.ForEach) (OperationKind.Loop, Type: null, IsInva
                                         ILocalReferenceOperation: x (OperationKind.LocalReference, Type: MissingType) (Syntax: 'x')
                                   ILiteralOperation (OperationKind.Literal, Type: null, Constant: null) (Syntax: 'null')
           Initializer: 
-            null
+            IVariableInitializerOperation (OperationKind.VariableInitializer, Type: null) (Syntax: '= !x.Equals(null)')
+              IConversionOperation (TryCast: False, Unchecked) (OperationKind.Conversion, Type: System.Boolean, IsImplicit) (Syntax: '!x.Equals(null)')
+                Conversion: CommonConversion (Exists: False, IsIdentity: False, IsNumeric: False, IsReference: False, IsUserDefined: False) (MethodSymbol: null)
+                Operand: 
+                  IUnaryOperation (UnaryOperatorKind.Not) (OperationKind.UnaryOperator, Type: ?) (Syntax: '!x.Equals(null)')
+                    Operand: 
+                      IInvalidOperation (OperationKind.Invalid, Type: ?) (Syntax: 'x.Equals(null)')
+                        Children(2):
+                            IOperation:  (OperationKind.None, Type: null) (Syntax: 'x.Equals')
+                              Children(1):
+                                  ILocalReferenceOperation: x (OperationKind.LocalReference, Type: MissingType) (Syntax: 'x')
+                            ILiteralOperation (OperationKind.Literal, Type: null, Constant: null) (Syntax: 'null')
   NextVariables(0)
 ";
             VerifyOperationTreeForTest<ForEachStatementSyntax>(source, expectedOperationTree);
@@ -695,7 +706,7 @@ IForEachLoopOperation (LoopKind.ForEach) (OperationKind.Loop, Type: null, IsInva
     IBlockOperation (1 statements) (OperationKind.Block, Type: null, IsInvalid) (Syntax: '{ x++; }')
       IExpressionStatementOperation (OperationKind.ExpressionStatement, Type: null, IsInvalid) (Syntax: 'x++;')
         Expression: 
-          IIncrementOrDecrementOperation (Postfix) (OperationKind.Increment, Type: System.Object, IsInvalid) (Syntax: 'x++')
+          IIncrementOrDecrementOperation (Postfix) (OperationKind.Increment, Type: ?, IsInvalid) (Syntax: 'x++')
             Target: 
               IInvalidOperation (OperationKind.Invalid, Type: System.Int32, IsInvalid, IsImplicit) (Syntax: 'x')
                 Children(1):
